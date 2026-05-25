@@ -1,0 +1,10 @@
+name: PhantomAntiCheat
+main: com.example.phantomanticheat.PhantomAnticheat
+version: 1.2.3
+api-version: "1.26"
+description: Basic anti-cheat plugin with verbose/debug option and config generation.
+commands:
+  anticheat:
+    description: Admin commands for PhantomAntiCheat
+    usage: /anticheat <reload|verbose|status>
+    permission: phantomanticheat.admin

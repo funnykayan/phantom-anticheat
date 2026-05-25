@@ -1,0 +1,59 @@
+# Phantom AntiCheat configuration
+verbose: false
+
+checks:
+  speed: true
+  fly: true
+  kill-aura:
+    threshold-per-sec: 8.0
+    notify: true
+  bot:
+    avg-interval-ms: 200.0
+    std-threshold-ms: 20.0
+  xray:
+    ore-ratio: 0.35
+    min-breaks: 50
+    notify: true
+  command-logging: true
+  chat-logging: true
+  verbose-logs: true
+  fastplace:
+    threshold: 8
+    window-ms: 500
+    notify: false
+  inventory:
+    threshold: 20
+    window-ms: 1000
+    notify: false
+  rotation:
+    max-yaw-per-tick: 90.0
+    max-pitch-per-tick: 45.0
+  aim:
+    std-threshold: 0.5
+    yaw-snap-threshold: 2.0
+  reach:
+    max: 4.5
+  criticals:
+    low-ratio: 0.05
+    high-ratio: 0.95
+  fastplace:
+    threshold: 8
+    window-ms: 500
+    notify: false
+markers:
+  duration-seconds: 20
+webhook:
+  url: ""
+ip:
+  blacklist: []
+  blacklist:
+    kick: false
+auto-punish:
+  threshold: 10
+  action: warn
+  temp-minutes: 60
+replay:
+  buffer-size: 600
+
+# Max horizontal movement allowed between move events (adjust to server tick/lag)
+max-speed: 5.0
