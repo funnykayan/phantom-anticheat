@@ -3,6 +3,7 @@ package com.example.phantomanticheat;
 import com.example.phantomanticheat.commands.AnticheatCommand;
 import com.example.phantomanticheat.detection.DetectionManager;
 import com.example.phantomanticheat.listeners.ChatCommandListener;
+import com.example.phantomanticheat.listeners.CommandLogListener;
 import com.example.phantomanticheat.listeners.CombatListener;
 import com.example.phantomanticheat.listeners.MovementListener;
 import com.example.phantomanticheat.listeners.BlockListener;
@@ -23,6 +24,7 @@ public final class PhantomAnticheat extends JavaPlugin {
     private com.example.phantomanticheat.reports.ReportScheduler reportScheduler;
     private com.example.phantomanticheat.antixray.AntiXrayService antiXrayService;
     private com.example.phantomanticheat.notify.WebhookNotifier webhookNotifier;
+
 
     @Override
     public void onEnable() {
@@ -51,6 +53,7 @@ public final class PhantomAnticheat extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatCommandListener(this, detectionManager), this);
         getServer().getPluginManager().registerEvents(new PlacementListener(this, detectionManager), this);
         getServer().getPluginManager().registerEvents(new InventoryListener(this, detectionManager), this);
+        getServer().getPluginManager().registerEvents(new CommandLogListener(this), this);
         AnticheatCommand cmd = new AnticheatCommand(this);
         getCommand("anticheat").setExecutor(cmd);
         getCommand("anticheat").setTabCompleter(cmd);
