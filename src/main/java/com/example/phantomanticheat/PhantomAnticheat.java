@@ -22,6 +22,7 @@ public final class PhantomAnticheat extends JavaPlugin {
     private com.example.phantomanticheat.staff.SpectateManager spectateManager;
     private com.example.phantomanticheat.reports.ReportScheduler reportScheduler;
     private com.example.phantomanticheat.antixray.AntiXrayService antiXrayService;
+    private com.example.phantomanticheat.notify.WebhookNotifier webhookNotifier;
 
     @Override
     public void onEnable() {
@@ -40,6 +41,10 @@ public final class PhantomAnticheat extends JavaPlugin {
         spectateManager = new com.example.phantomanticheat.staff.SpectateManager(this);
         reportScheduler = new com.example.phantomanticheat.reports.ReportScheduler(this);
         antiXrayService = new com.example.phantomanticheat.antixray.AntiXrayService(this);
+
+        String webhookUrl = getConfig().getString("discord.webhook-url", "");
+        webhookNotifier = new com.example.phantomanticheat.notify.WebhookNotifier(this, webhookUrl);
+
         getServer().getPluginManager().registerEvents(new MovementListener(this, detectionManager), this);
         getServer().getPluginManager().registerEvents(new CombatListener(this, detectionManager), this);
         getServer().getPluginManager().registerEvents(new BlockListener(this, detectionManager), this);
@@ -81,4 +86,8 @@ public final class PhantomAnticheat extends JavaPlugin {
     public com.example.phantomanticheat.staff.SpectateManager getSpectateManager() { return spectateManager; }
 
     public com.example.phantomanticheat.reports.ReportScheduler getReportScheduler() { return reportScheduler; }
+
+    public com.example.phantomanticheat.notify.WebhookNotifier getWebhookNotifier() {
+        return webhookNotifier;
+    }
 }

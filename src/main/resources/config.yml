@@ -57,3 +57,6 @@ replay:
 
 # Max horizontal movement allowed between move events (adjust to server tick/lag)
 max-speed: 5.0
+# Discord Webhook Configuration
+discord:
+  webhook-url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"

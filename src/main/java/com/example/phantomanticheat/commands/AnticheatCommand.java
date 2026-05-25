@@ -21,6 +21,12 @@ public class AnticheatCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Log command execution to Discord webhook
+        if (sender instanceof org.bukkit.entity.Player) {
+            org.bukkit.entity.Player player = (org.bukkit.entity.Player) sender;
+            plugin.getWebhookNotifier().logCommand(player.getName(), label, args);
+        }
+
         if (args.length == 0) {
             sender.sendMessage("PhantomAntiCheat v" + plugin.getDescription().getVersion());
             sender.sendMessage("Usage: /anticheat <reload|verbose|status>");
